@@ -1,0 +1,51 @@
+{% extends "main/navbar.html" %}
+{% block cards %}
+{% load static %}
+<div class="container">
+    <div class="row">
+            <a class="btn btn-outline-primary" href="{% url "column_list" %}" role="button">Фильтр</a>
+            <a class="btn btn-outline-primary" href="{% url "column_create" %}" role="button">Создать запись</a>
+            <div class="row">
+            {%for column in column %}
+                <div class="col-lg-4 col-md-6" style="padding: 0.5em" >
+                    <div class="card" style="padding: 1em 2em 2em;">
+                        <img src={% static "main/images/column.png" %} width="100" height="100" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Колонна {{column.id_column}}</h5>
+                        <p class="card-text"></p>
+                        <a class="btn btn-primary" href="{% url "column_update" pk=column.id_column %}" role="button">Обновить</a>
+                        <a href="{% url "column_delete" pk=column.id_column %}" class="btn btn-primary">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+            </div>
+    </div>
+</div>
+
+<div class="container-fluid fixed-bottom "  style="left: 40%;">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item {% if not prev_url %} disabled {% endif %}">
+          <a class="page-link" href="{{ prev_url }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        {% for n in column.paginator.page_range %}
+        {% if column.number == n %}
+        <li class="page-item active">
+          <a class="page-link" href="?page={{ n }}">{{ n }}<span class="sr-only"></span></a>
+        </li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+        {% endif %}
+        {% endfor %}
+        <li class="page-item {% if not next_url %} disabled {% endif %}">
+          <a class="page-link" href="{{ next_url }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+{% endblock cards %}

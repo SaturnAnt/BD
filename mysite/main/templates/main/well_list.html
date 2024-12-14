@@ -1,0 +1,13 @@
+{% extends "main/navbar.html" %}
+{% block cards %}
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Найти</button>
+</form>
+
+<ul>
+    {% for well in filter.qs %}
+        <li>Скважина {{ well.id_well }} находится на участке {{well.area_id}}</li>
+    {% endfor %}
+</ul>
+{% endblock cards%}

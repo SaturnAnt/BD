@@ -1,0 +1,17 @@
+{% extends "main/navbar.html" %}
+{% block cards %}
+
+<div class="container">
+    <div class="center">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Удалить участок</h2>
+            <p>Вы уверены, что хотите удалить колонну "{{object.id_column}}"?</p>
+            <p class="form-buttons">
+                <input type="submit" class="btn btn-primary" value="Удалить">
+                <a class="btn btn-outline" href="{% url 'column' %}" class="btn btn-outline">Назад</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock cards%}

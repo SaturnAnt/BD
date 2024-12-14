@@ -1,0 +1,13 @@
+{% extends "main/navbar.html" %}
+{% block cards %}
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Найти</button>
+</form>
+
+<ul>
+    {% for area in filter.qs %}
+        <li>{{ area.area_name }} принадлежит ID {{area.id_area}}</li>
+    {% endfor %}
+</ul>
+{% endblock cards%}

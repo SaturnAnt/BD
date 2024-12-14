@@ -1,0 +1,13 @@
+{% extends "main/navbar.html" %}
+{% block cards %}
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Найти</button>
+</form>
+
+<ul>
+    {% for column in filter.qs %}
+        <li>Колонна {{ column.id_column }}</li>
+    {% endfor %}
+</ul>
+{% endblock cards%}

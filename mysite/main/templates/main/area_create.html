@@ -1,0 +1,13 @@
+{% extends "main/navbar.html" %}
+{% block cards %}
+
+<div><center><h1>Создание нового участка</h1></center></div>
+
+<div class="container">
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-success" type="submit">Загрузка</button>
+</form>
+</div>
+{% endblock cards%}

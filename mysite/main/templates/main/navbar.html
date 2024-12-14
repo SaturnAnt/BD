@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-link active" href=""><img src="{% static "main/images/logo.png" %}" alt="Логотип"></a>
+            <a class="nav-link" href="{% url "area" %}">Участки</a>
+            <a class="nav-link" href="{% url "well" %}">Скважины</a>
+            <a class="nav-link" href="{% url "column" %}">Колонны</a>
+            <a class="nav-link" href="{% url "cementing" %}">Цементаж</a>
+            <!--
+            <a class="nav-link" href="#">Перфорация</a>
+            <a class="nav-link" href="#">Трубы</a>
+            <a class="nav-link" href="#">Оборудование</a>
+            -->
+            <a class="nav-link" href="{% url "users:logout" %}">Выход</a>
+        </div>
+    </div>
+</nav>
+{% block cards %}
+{% endblock %}
+{% endblock %}

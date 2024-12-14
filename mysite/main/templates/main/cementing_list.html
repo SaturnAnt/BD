@@ -1,0 +1,13 @@
+{% extends "main/navbar.html" %}
+{% block cards %}
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Найти</button>
+</form>
+
+<ul>
+    {% for cementing in filter.qs %}
+        <li>Цементаж колонны {{ cementing.column_id }} произведен на скважине {{cementing.well_id}}</li>
+    {% endfor %}
+</ul>
+{% endblock cards%}
